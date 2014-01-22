@@ -1,32 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FizzBuzz
 {
-    public class FizzBuzzSolver : FizzBuzz.IFizzBuzzSolver
+    public class FizzBuzzSolver : IFizzBuzzSolver
     {
         public string Solve(int numberToPrint)
         {
-            string result = "";
-            if (numberToPrint % 3 == 0)
+            if (numberToPrint >= FizzBuzzMap.Result.Length)
             {
-                result = result + "Fizz";
-            }
-            if (numberToPrint % 5 == 0)
-            {
-                result = result + "Buzz";
+                return "number is to large";
             }
 
-            if (String.IsNullOrEmpty(result))
-            {
-                return numberToPrint.ToString();
-
-            }
-            return result;
-
+            return FizzBuzzMap.Result[Math.Abs(numberToPrint)];
         }
     }
 }
