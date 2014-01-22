@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DivisionMatcher.cs" />
     <Compile Include="FizzBuzzSolver.cs" />
     <Compile Include="IFizzBuzzSolver.cs" />
     <Compile Include="Program.cs" />

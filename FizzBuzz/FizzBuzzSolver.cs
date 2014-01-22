@@ -1,32 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Globalization;
 
 namespace FizzBuzz
 {
-    public class FizzBuzzSolver : FizzBuzz.IFizzBuzzSolver
+    public class FizzBuzzSolver : IFizzBuzzSolver
     {
+        private readonly List<DivisionMatcher> _matchers;
+
+        public FizzBuzzSolver()
+        {
+            _matchers = new List<DivisionMatcher>
+            {
+                new DivisionMatcher(3, "Fizz"),
+                new DivisionMatcher(5, "Buzz"),
+                new DivisionMatcher(15, "FizzBuzz")
+            };
+            _matchers.Sort();
+        }
+
         public string Solve(int numberToPrint)
         {
-            string result = "";
-            if (numberToPrint % 3 == 0)
+            foreach (DivisionMatcher matcher in _matchers)
             {
-                result = result + "Fizz";
+                if (matcher.Match(numberToPrint))
+                {
+                    return matcher.Result;
+                }
             }
-            if (numberToPrint % 5 == 0)
-            {
-                result = result + "Buzz";
-            }
-
-            if (String.IsNullOrEmpty(result))
-            {
-                return numberToPrint.ToString();
-
-            }
-            return result;
-
+            return numberToPrint.ToString(CultureInfo.InvariantCulture);
         }
     }
 }
