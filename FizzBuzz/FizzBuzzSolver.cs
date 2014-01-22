@@ -10,8 +10,23 @@ namespace FizzBuzz
     {
         public string Solve(int numberToPrint)
         {
-		// this is a new comment 
-            throw new NotImplementedException();
+            string result = "";
+            if (numberToPrint % 3 == 0)
+            {
+                result = result + "Fizz";
+            }
+            if (numberToPrint % 5 == 0)
+            {
+                result = result + "Buzz";
+            }
+
+            if (String.IsNullOrEmpty(result))
+            {
+                return numberToPrint.ToString();
+
+            }
+            return result;
+
         }
     }
 }
